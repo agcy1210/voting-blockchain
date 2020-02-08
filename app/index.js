@@ -97,6 +97,10 @@ app.post('/api/peers/add', (req, res) => {
 	res.json({ message });
 });
 
+app.post('/api/publicKey', (req, res) => {
+	res.json({ publicKey: bc.getPublicKey(req.body.data) });
+});
+
 app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
 
 // this will start the websocket server in this blockchain app instance

@@ -92,6 +92,17 @@ class Blockchain {
             return "Block not found";
         }
     }
+
+    getPublicKey(data) {
+        let block = this.chain.filter(block => {
+            return block.data.id === data.id;
+        });
+        if(block) {
+            return block.publicKey;
+        } else {
+            return "Block not found";
+        }
+    }
 }
 
 module.exports = Blockchain;
