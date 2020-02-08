@@ -6,6 +6,7 @@ const fs = require('fs');
 const { BACKUP_PATH, BACKUP_DIR } = require('../config');
 const ChainUtil = require('../chain-util');
 const axios = require('axios');
+const cors = require('cors');
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 
@@ -16,6 +17,7 @@ const p2pServer = new P2pServer(bc);
 
 //body parser is used to recieve data from post request in a specific format
 app.use(bodyParser.json());
+app.use(cors());
 
 //ChainUtil.removeBackupFile();
 //backup file for storing chain
@@ -98,6 +100,7 @@ app.post('/api/peers/add', (req, res) => {
 });
 
 app.post('/api/publicKey', (req, res) => {
+	console.log(req.body.data);
 	res.json({ publicKey: bc.getPublicKey(req.body.data) });
 });
 

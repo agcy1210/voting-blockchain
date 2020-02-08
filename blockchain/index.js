@@ -98,7 +98,7 @@ class Blockchain {
             return block.data.id === data.id;
         });
         if(block) {
-            return block.publicKey;
+            return block[0].publicKey;
         } else {
             return "Block not found";
         }
